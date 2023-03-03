@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseDirective } from '../directives/base.directive';
 
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.scss'],
 })
-export class ParentComponent extends BaseDirective implements OnInit {
+export class ParentComponent implements OnInit {
   title: string = 'Parent title';
 
   ngOnInit(): void {}

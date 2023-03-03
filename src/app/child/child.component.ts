@@ -1,5 +1,6 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import {Component, HostListener, Inject, Input, OnInit, Optional} from '@angular/core';
 import { Subject } from 'rxjs';
+import {ManageChildrenDirective} from '../directives/manage-children.directive';
 
 @Component({
   selector: 'app-child',
@@ -9,6 +10,9 @@ import { Subject } from 'rxjs';
 export class ChildComponent implements OnInit {
   clickChanges: Subject<string> = new Subject<string>();
 
+
+  parentTitle: string = '';
+
   @Input() title!: string;
 
   @HostListener('click')
@@ -17,7 +21,12 @@ export class ChildComponent implements OnInit {
     this.clickChanges.next(this.title);
   }
 
-  constructor() {}
+  constructor(@Inject(ManageChildrenDirective) @Optional() private manageDirective: ManageChildrenDirective) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.manageDirective.myChanges.subscribe((response) => {
+      this.parentTitle = response;
+    })
+  }
 }

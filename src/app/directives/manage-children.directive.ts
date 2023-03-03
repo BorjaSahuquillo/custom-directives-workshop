@@ -5,7 +5,7 @@ import {
   Host,
   QueryList,
 } from '@angular/core';
-import { merge } from 'rxjs';
+import {merge, Subject} from 'rxjs';
 import { ChildComponent } from '../child/child.component';
 import { ParentComponent } from '../parent/parent.component';
 
@@ -14,6 +14,8 @@ import { ParentComponent } from '../parent/parent.component';
 })
 export class ManageChildrenDirective implements AfterContentInit {
   @ContentChildren(ChildComponent) private children!: QueryList<ChildComponent>;
+
+  myChanges: Subject<string> = new Subject();
 
   constructor(@Host() private parentComponent: ParentComponent) {}
 
@@ -24,6 +26,7 @@ export class ManageChildrenDirective implements AfterContentInit {
       (response) => {
         console.log('child selected: ', response);
         this.parentComponent.title = response;
+        this.myChanges.next(response);
       }
     );
   }
