@@ -6,8 +6,8 @@ import {
   QueryList,
 } from '@angular/core';
 import { merge } from 'rxjs';
-import { ChildComponent } from './child/child.component';
-import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from '../child/child.component';
+import { ParentComponent } from '../parent/parent.component';
 
 @Directive({
   selector: '[appManageChildren]',

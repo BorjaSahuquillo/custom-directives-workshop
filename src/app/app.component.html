@@ -1,0 +1,50 @@
+<h3>Ejemplo directiva normal</h3>
+<app-parent [appParentModify]="true" #MyDirective="appParentModify">
+  <button (click)="MyDirective.modifyClass = !MyDirective.modifyClass">
+    Cambiar el fondo
+  </button>
+</app-parent>
+
+<div class="app-separator-example"></div>
+
+<h3>Ejemplo directiva componentizada</h3>
+
+<app-card>
+  <app-card-actions> <button>Aceptar</button> </app-card-actions>
+  <app-card-body><p>Mi card body</p></app-card-body>
+</app-card>
+
+<div class="app-separator-example"></div>
+
+<h3>Ejemplo componente directivizado</h3>
+<button app-my-button>Prueba de botón</button>
+
+<div class="app-separator-example"></div>
+
+
+<h3>Ejemplo inyección del parent dentro de la directiva</h3>
+
+<app-parent>
+  <app-card appCardParentHandler> </app-card>
+</app-parent>
+
+
+<div class="app-separator-example"></div>
+
+<h3>Ejemplo Directiva base</h3>
+
+<app-parent appBase></app-parent>
+<app-card appBase> </app-card>
+
+
+<div class="app-separator-example"></div>
+
+<h3>Ejemplo Directiva para controlar los hijos</h3>
+
+<app-parent appManageChildren>
+  <app-child title="1"></app-child>
+  <app-child title="2"></app-child>
+  <app-child title="3"></app-child>
+</app-parent>
+
+<div class="app-separator-example"></div>
