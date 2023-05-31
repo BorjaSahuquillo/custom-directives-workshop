@@ -10,6 +10,13 @@ export class CardParentHandlerDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('TESTING APP CARD PARENT HANDLER')
     this.myParent.testingTitle();
-  }
+
+    setTimeout(() => {
+
+      console.log('TESTING APP CARD PARENT HANDLER')
+      this.myParent.testingTitle();
+
+    }, 2000);}
 }
